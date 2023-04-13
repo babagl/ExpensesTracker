@@ -49,10 +49,27 @@ struct HomeTrackerView: View {
                 ExpenseCard()
                     .environmentObject(expenseViewModel)
                 
-                Text("Budgets")
-                    .font(.title2.bold())
-                    .opacity(0.7)
+                HStack {
+                    Text("Budgets")
+                        .font(.title2.bold())
+                        .opacity(0.7)
                     .frame(maxWidth: .infinity,alignment: .leading)
+                    
+                    
+                        Menu{
+                            Button("filtre1"){
+                                
+                            }
+                            Button("filtre1"){
+                                
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .rotationEffect(.init(degrees: 90))
+                                .foregroundColor(.black)
+                        }
+                    
+                }
                     
                 
                     ScrollView(.horizontal, showsIndicators: false){

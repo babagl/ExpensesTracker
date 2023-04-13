@@ -11,7 +11,11 @@ struct GridBudgetView: View {
     var expense : Expense
     @EnvironmentObject var expenseViewModel : ExpenseViewModel
     var body: some View {
-        NavigationLink(destination: {Text("inside Transaction")}, label: {
+        NavigationLink(destination: {
+            DetailsBudgetsView()
+                .navigationBarBackButtonHidden()
+            
+        }, label: {
             VStack{
                 HStack{
                     VStack {

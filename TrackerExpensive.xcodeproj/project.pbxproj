@@ -24,6 +24,7 @@
 		0258426129DECBC200FD9E97 /* ExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0258426029DECBC200FD9E97 /* ExpenseCard.swift */; };
 		0258426329DF199D00FD9E97 /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0258426229DF199D00FD9E97 /* NewExpenseView.swift */; };
 		02B0E58329E7F5DB002BFB3C /* GridBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0E58229E7F5DB002BFB3C /* GridBudgetView.swift */; };
+		02B0E58529E81544002BFB3C /* DetailsBudgetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0E58429E81544002BFB3C /* DetailsBudgetsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		0258426029DECBC200FD9E97 /* ExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCard.swift; sourceTree = "<group>"; };
 		0258426229DF199D00FD9E97 /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
 		02B0E58229E7F5DB002BFB3C /* GridBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBudgetView.swift; sourceTree = "<group>"; };
+		02B0E58429E81544002BFB3C /* DetailsBudgetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBudgetsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				0258426229DF199D00FD9E97 /* NewExpenseView.swift */,
 				02520AA729E593FE00110385 /* ListExpenseView.swift */,
 				02B0E58229E7F5DB002BFB3C /* GridBudgetView.swift */,
+				02B0E58429E81544002BFB3C /* DetailsBudgetsView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				0258425D29DE116100FD9E97 /* TransactionCarView.swift in Sources */,
 				0258426129DECBC200FD9E97 /* ExpenseCard.swift in Sources */,
 				022BF2F729DD83040042B761 /* HomeTrackerView.swift in Sources */,
+				02B0E58529E81544002BFB3C /* DetailsBudgetsView.swift in Sources */,
 				0258426329DF199D00FD9E97 /* NewExpenseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
