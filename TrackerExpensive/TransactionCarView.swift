@@ -10,9 +10,11 @@ import SwiftUI
 struct TransactionCarView: View {
     var expense :Expense
     @EnvironmentObject var expenseViewModel : ExpenseViewModel
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath:\Cathegories.nomdecathegorie, ascending: true)]) private var cathegories : FetchedResults<Cathegories>
+    
     var body: some View {
+        
         HStack (spacing: 12){
+            
             if let first = expense.remark.first{
                 
                 Text(String(first))
@@ -26,6 +28,7 @@ struct TransactionCarView: View {
                     .shadow(color: .black.opacity(0.08), radius: 5, x: 5,y: 5)
                 
                 Text(expense.remark)
+                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                     .lineLimit(1)
                     .frame(maxWidth: .infinity ,alignment: .leading)
@@ -39,6 +42,7 @@ struct TransactionCarView: View {
                     Text(expense.date.formatted(date: .numeric, time: .omitted))
                         .font(.caption)
                         .opacity(0.5)
+                        .foregroundColor(.black)
                         
                 }
             }
@@ -48,8 +52,7 @@ struct TransactionCarView: View {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
                 .fill(.white)
         }
-        
-    }
+        }
 }
 
 struct TransactionCarView_Previews: PreviewProvider {

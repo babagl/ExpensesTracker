@@ -40,8 +40,37 @@ struct HomeTrackerView: View {
                             .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
                     }
                 }
+          
+                Text("Card")
+                    .font(.title2.bold())
+                    .opacity(0.7)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    
                 ExpenseCard()
                     .environmentObject(expenseViewModel)
+                
+                Text("Budgets")
+                    .font(.title2.bold())
+                    .opacity(0.7)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    
+                
+                    ScrollView(.horizontal, showsIndicators: false){
+                            HStack {
+                                ForEach(expenseViewModel.expenses){expense in
+                                    GridBudgetView(expense: expense)
+                                        .environmentObject(expenseViewModel)
+                                }
+                                VStack {
+                                    AddButton()
+                                    Spacer()
+                                }
+                            }
+                            .padding(.top, 12)
+                        
+                    }
+                
+                
                 TransactionView()
             }
             .padding()
@@ -62,7 +91,7 @@ struct HomeTrackerView: View {
     @ViewBuilder
     func TransactionView() -> some View {
         VStack(spacing: 15 ){
-            Text("Transaction")
+            Text("Transactions")
                 .font(.title2.bold())
                 .opacity(0.7)
                 .frame(maxWidth: .infinity,alignment: .leading)

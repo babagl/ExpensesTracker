@@ -37,8 +37,7 @@ struct FilteredDetailView: View {
                             .frame(width: 40, height: 40)
                             .background(Color.white, in: RoundedRectangle(cornerRadius: 10 , style: .continuous))
                             .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
-                    }
-                    
+                    }          
                 }
                 ExpenseCard(isFilter: true)
                     .environmentObject(expenseViewModel)

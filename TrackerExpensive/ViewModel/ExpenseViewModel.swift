@@ -11,7 +11,8 @@ class ExpenseViewModel: ObservableObject {
    // Propreties
     @Published var expenses: [Expense] = sample_expenses
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath:\Cathegories.nomdecathegorie, ascending: true)]) private var cathegories : FetchedResults<Cathegories>
+   
+
     @Published var startDate : Date = Date()
     @Published var endDate : Date = Date()
     @Published var currentMonthStartDate : Date = Date()
@@ -46,6 +47,7 @@ class ExpenseViewModel: ObservableObject {
     func convertExpensesToCurrency(expences : [Expense], type: ExpenseType = .all) -> String {
         var value : Double = 0
         value = expences.reduce(0, { partialResult, expence in
+            print(expence.contenue.first)
             return partialResult + (type == .all ? (expence.type == .income ? expence.amount : -expence.amount) : (expence.type == type ? expence.amount : 0))
         })
        return convertNumberToPrice(value: value)
@@ -79,7 +81,7 @@ class ExpenseViewModel: ObservableObject {
         print("save")
         let amoutInDouble = (amount as NSString).doubleValue
         let colors = ["Yellow","Red","Purple","Green"]
-        let expense = Expense(remark: remark, amount: amoutInDouble, date: date, type: type, color: colors.randomElement() ?? "Yellow")
+        let expense = Expense(remark: remark, amount: amoutInDouble, date: date, type: type, color: colors.randomElement() ?? "Yellow", contenue: [Contenue(sent: "name", date: Date(), amount: amoutInDouble)])
         withAnimation{expenses.append(expense)}
         expenses = expenses.sorted(by: {first, scnd in
             return scnd.date < first.date
@@ -87,17 +89,5 @@ class ExpenseViewModel: ObservableObject {
         env.dismiss()
     }
     
-    func persistenceData(){
-        let newCategories = Cathegories(context: viewContext)
-        newCategories.id = UUID()
-        newCategories.nomdecathegorie = remark
-        newCategories.montant = Double(amount) ?? 0.0
-        do{
-            try viewContext.save()
-        }catch{
-            print("error saving \(error.localizedDescription)")
-        }
-        
-        
-    }
+    
 }

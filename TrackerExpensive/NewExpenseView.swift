@@ -101,8 +101,8 @@ struct NewExpenseView: View {
             }
             .frame(maxHeight:.infinity, alignment: .center)
             Button{
-//                expenseViewModel.saveData(env: env)
-                expenseViewModel.persistenceData()
+                expenseViewModel.saveData(env: env)
+//                expenseViewModel.persistenceData()
             }label: {
                 Text("SAVE")
                     .font(.title3)

@@ -9,7 +9,9 @@ import SwiftUI
 
 @main
 struct TrackerExpensiveApp: App {
+    
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
         }
