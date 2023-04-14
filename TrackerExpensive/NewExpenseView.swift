@@ -148,7 +148,7 @@ struct NewExpenseView: View {
     @ViewBuilder
     func CustomCheckBox() -> some View {
         HStack(spacing: 10){
-            ForEach([ExpenseType.income, .expense],id:\.self){type in
+            ForEach([TransactionType.income, .expense],id:\.self){type in
                 ZStack{
                     RoundedRectangle(cornerRadius: 2)
                         .stroke(.black,lineWidth: 2)

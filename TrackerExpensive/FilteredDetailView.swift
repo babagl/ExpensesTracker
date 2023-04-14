@@ -132,7 +132,7 @@ struct FilteredDetailView: View {
     @ViewBuilder
     func customSegmentCountrol() -> some View {
         HStack (spacing: 0){
-            ForEach([ExpenseType.income , ExpenseType.expense], id: \.rawValue){tab in
+            ForEach([TransactionType.income , TransactionType.expense], id: \.rawValue){tab in
                 Text(tab.rawValue.capitalized)
                     .fontWeight(.semibold)
                     .foregroundColor(expenseViewModel.tabName == tab ? .white : .black)

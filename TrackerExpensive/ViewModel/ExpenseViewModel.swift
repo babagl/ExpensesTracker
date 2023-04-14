@@ -9,7 +9,7 @@ import SwiftUI
 
 class ExpenseViewModel: ObservableObject {
    // Propreties
-    @Published var expenses: [Expense] = sample_expenses
+    @Published var expenses: [SousCompte] = sample_expenses
     @Environment(\.managedObjectContext) private var viewContext
    
 
@@ -20,12 +20,12 @@ class ExpenseViewModel: ObservableObject {
     @Published var showFilterView: Bool = false
     
     ///Expense / Income Tab
-    @Published var tabName: ExpenseType = .expense
+    @Published var tabName: TransactionType = .expense
     
     //New Expense Propreties
     @Published var addNewExpense : Bool = false
     @Published var amount : String = ""
-    @Published var type : ExpenseType = .all
+    @Published var type : TransactionType = .all
     @Published var date : Date = Date()
     @Published var remark : String = ""
     
@@ -44,10 +44,10 @@ class ExpenseViewModel: ObservableObject {
         return currentMonthStartDate.formatted(date: .abbreviated, time: .omitted) + " - " + Date().formatted(date: .abbreviated, time: .omitted)
     }
     
-    func convertExpensesToCurrency(expences : [Expense], type: ExpenseType = .all) -> String {
+    func convertExpensesToCurrency(expences : [SousCompte], type: TransactionType = .all) -> String {
+        print("\(expences[1].contenue[0].sent)")
         var value : Double = 0
         value = expences.reduce(0, { partialResult, expence in
-            print(expence.contenue.first)
             return partialResult + (type == .all ? (expence.type == .income ? expence.amount : -expence.amount) : (expence.type == type ? expence.amount : 0))
         })
        return convertNumberToPrice(value: value)
@@ -81,7 +81,7 @@ class ExpenseViewModel: ObservableObject {
         print("save")
         let amoutInDouble = (amount as NSString).doubleValue
         let colors = ["Yellow","Red","Purple","Green"]
-        let expense = Expense(remark: remark, amount: amoutInDouble, date: date, type: type, color: colors.randomElement() ?? "Yellow", contenue: [Contenue(sent: "name", date: Date(), amount: amoutInDouble)])
+        let expense = SousCompte(remark: remark, amount: amoutInDouble, date: date, type: type, color: colors.randomElement() ?? "Yellow", contenue: [Transaction(sent: "name", date: Date(), amount: amoutInDouble)])
         withAnimation{expenses.append(expense)}
         expenses = expenses.sorted(by: {first, scnd in
             return scnd.date < first.date

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetailsBudgetsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var expenseViewModel :ExpenseViewModel
+    var isFilter : Bool = false
     var body: some View {
         
         ScrollView(.vertical , showsIndicators: false) {
@@ -24,7 +26,7 @@ struct DetailsBudgetsView: View {
                                 .font(.caption)
                                 .fontWeight(.semibold)
                             HStack {
-                                Image(systemName: "arrowtriangle.backward")
+                                Image(systemName: "chevron.backward")
                                 Text("BabaGalle")
                                     .font(.title2.bold())
                             }
@@ -34,18 +36,6 @@ struct DetailsBudgetsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
 
-//                    VStack(alignment: .leading,spacing: 5) {
-//
-//                        Text("welcome")
-//                            .foregroundColor(Color("Gray"))
-//                            .font(.caption)
-//                            .fontWeight(.semibold)
-//                        Text("BabaGalle")
-//                            .font(.title2.bold())
-//
-//                    }
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-                    
                 }
                 GeometryReader{proxy in
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -113,7 +103,27 @@ struct DetailsBudgetsView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .frame(height: 220)
-            .padding(.top)
+                .padding(.top)
+                HStack{
+                    Text("Transactions")
+                        .font(.title2.bold())
+                        .opacity(0.7)
+                    .frame(maxWidth: .infinity,alignment: .leading)
+      
+                        Menu{
+                            Button("filtre1"){
+                                
+                            }
+                            Button("filtre1"){
+                                
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                
+                                .foregroundColor(.black)
+                        }
+
+                }
             }
             .padding()
         }

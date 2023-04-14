@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListExpenseView: View {
     @EnvironmentObject var expenseViewModel : ExpenseViewModel
-    var contenue : [Contenue]
+    var contenue : [Transaction]
     var body: some View {
        
         ScrollView(.vertical , showsIndicators: false){
@@ -23,7 +23,7 @@ struct ListExpenseView: View {
 }
 
 struct ListExpenseView_Previews: PreviewProvider {
-    var expenses : Expense = Expense(remark: "", amount: 0, date: Date(), type: .income, color: "", contenue: [])
+    var expenses : SousCompte = SousCompte(remark: "", amount: 0, date: Date(), type: .income, color: "", contenue: [])
     static var previews: some View {
         Group {
             ListExpenseView(contenue:sample_contenue)

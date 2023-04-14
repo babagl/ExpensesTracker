@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TransactionCarView: View {
-    var expense :Expense
+    var expense :SousCompte
     @EnvironmentObject var expenseViewModel : ExpenseViewModel
     
     var body: some View {
