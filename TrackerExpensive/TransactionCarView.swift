@@ -34,11 +34,11 @@ struct TransactionCarView: View {
                     .frame(maxWidth: .infinity ,alignment: .leading)
                 VStack(alignment: .trailing, spacing: 7){
                     //displaying price
-                    let price = expenseViewModel.convertNumberToPrice(value: expense.type == .expense ? -expense.amount : expense.amount)
+                    let price = expenseViewModel.convertNumberToPrice(value: expense.type == .sortants ? -expense.amount : expense.amount)
                     Text(price)
                         .font(.callout)
                         .opacity(0.7)
-                        .foregroundColor(expense.type == .expense ? Color("Red"):Color("Green"))
+                        .foregroundColor(expense.type == .sortants ? Color("Red"):Color("Green"))
                     Text(expense.date.formatted(date: .numeric, time: .omitted))
                         .font(.caption)
                         .opacity(0.5)

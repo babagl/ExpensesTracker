@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct GridBudgetView: View {
-    var expense : SousCompte
+    var sousCompte : SousCompte
     @EnvironmentObject var expenseViewModel : ExpenseViewModel
+    
+    @StateObject var expensesViewModel : ExpenseViewModel = .init()
     var body: some View {
-        NavigationLink(destination: {
-            DetailsBudgetsView()
-                .navigationBarBackButtonHidden()
-            
-        }, label: {
             VStack{
                 HStack{
                     VStack {
                         HStack {
-                            Text(expense.remark)
+                            Text(sousCompte.remark)
                                 .foregroundColor(.white)
                                 .font(.caption)
                                 .fontWeight(.bold)
@@ -29,7 +26,7 @@ struct GridBudgetView: View {
                         .padding(. horizontal, 5)
                         .padding(.bottom, 20)
                         
-                        let price = expenseViewModel.convertNumberToPrice(value: expense.type == .expense ? -expense.amount : expense.amount)
+                        let price = expenseViewModel.convertNumberToPrice(value: sousCompte.type == .sortants ? -sousCompte.amount : sousCompte.amount)
                         Text(price)
                             .font(.callout)
                             .foregroundColor(.white)
@@ -37,7 +34,7 @@ struct GridBudgetView: View {
                         
                         HStack {
                             Spacer()
-                            Text(expense.date.formatted(date: .numeric, time: .omitted))
+                            Text(sousCompte.date.formatted(date: .numeric, time: .omitted))
                                 .font(.caption2)
                                 .opacity(0.5)
                                 .foregroundColor(.black)
@@ -59,7 +56,7 @@ struct GridBudgetView: View {
                 Color("Gradient3"),
             ], startPoint: .topLeading, endPoint: .bottomTrailing))
             .cornerRadius(20)
-        })
+        
     }
 }
 

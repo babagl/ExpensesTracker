@@ -49,7 +49,7 @@ struct FilteredDetailView: View {
                 VStack(spacing: 15){
                     Text(expenseViewModel.convertDateToString())
                         .opacity(0.7)
-                    Text(expenseViewModel.convertExpensesToCurrency(expences: expenseViewModel.expenses, type: expenseViewModel.tabName))
+                    Text(expenseViewModel.convertExpensesToCurrency(depenses: expenseViewModel.sousComptes, type: expenseViewModel.tabName))
                         .font(.title.bold())
                         .opacity(0.9)
                         .animation(.none, value: expenseViewModel.tabName)
@@ -62,7 +62,7 @@ struct FilteredDetailView: View {
                 }
                 .padding(.vertical,20)
                 
-                ForEach(expenseViewModel.expenses.filter{
+                ForEach(expenseViewModel.sousComptes.filter{
                     return $0.type == expenseViewModel.tabName
                 }){expense in
                     TransactionCarView(expense: expense)
@@ -95,7 +95,7 @@ struct FilteredDetailView: View {
                     Text("Start Date")
                         .font(.caption)
                         .opacity(0.5)
-                    DatePicker("", selection: $expenseViewModel.startDate,in: Date.distantPast...Date(), displayedComponents: [.date])
+                    DatePicker("", selection: $expenseViewModel.dateDedepart,in: Date.distantPast...Date(), displayedComponents: [.date])
                         .labelsHidden()
                         .datePickerStyle(.compact)
                     
@@ -103,7 +103,7 @@ struct FilteredDetailView: View {
                         .font(.caption)
                         .opacity(0.5)
                         .padding(.top,10)
-                    DatePicker("", selection: $expenseViewModel.endDate,in: Date.distantPast...Date(), displayedComponents: [.date])
+                    DatePicker("", selection: $expenseViewModel.dateDefin,in: Date.distantPast...Date(), displayedComponents: [.date])
                         .labelsHidden()
                         .datePickerStyle(.compact)
                 }
@@ -132,7 +132,7 @@ struct FilteredDetailView: View {
     @ViewBuilder
     func customSegmentCountrol() -> some View {
         HStack (spacing: 0){
-            ForEach([TransactionType.income , TransactionType.expense], id: \.rawValue){tab in
+            ForEach([TypeDeTransaction.entrants , TypeDeTransaction.sortants], id: \.rawValue){tab in
                 Text(tab.rawValue.capitalized)
                     .fontWeight(.semibold)
                     .foregroundColor(expenseViewModel.tabName == tab ? .white : .black)

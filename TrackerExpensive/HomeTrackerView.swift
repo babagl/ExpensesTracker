@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeTrackerView: View {
     @StateObject var expenseViewModel : ExpenseViewModel = .init()
+    @State var showFabButton = false
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             VStack(spacing: 12){
@@ -60,9 +61,15 @@ struct HomeTrackerView: View {
                 
                     ScrollView(.horizontal, showsIndicators: false){
                             HStack {
-                                ForEach(expenseViewModel.expenses){expense in
-                                    GridBudgetView(expense: expense)
-                                        .environmentObject(expenseViewModel)
+                                ForEach(expenseViewModel.sousComptes){expense in
+                                    NavigationLink(destination: {
+                                        DetailsBudgetWithTransaction(sousCompte: expense)
+                                            .environmentObject(expenseViewModel)
+                                            .navigationBarBackButtonHidden()
+                                    }, label: {
+                                        GridBudgetView(sousCompte: expense)
+                                            .environmentObject(expenseViewModel)
+                                    })
                                 }
                                 VStack {
                                     AddButton()
@@ -86,7 +93,16 @@ struct HomeTrackerView: View {
                 .environmentObject(expenseViewModel)
         }
         .overlay(alignment: .bottomTrailing){
-            AddButton()
+            VStack{
+                
+                if showFabButton{
+                        AddButton()
+                        ExchangeButton()
+                        TransactionButton()
+                }
+                FabButton(showfabButton: $showFabButton)
+            }
+            .animation(.spring())
         }
     }
     
@@ -100,7 +116,7 @@ struct HomeTrackerView: View {
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.bottom)
             
-            ForEach(expenseViewModel.expenses){expense in
+            ForEach(expenseViewModel.sousComptes){expense in
                 //transaction Card View
                 TransactionCarView(expense: expense)
                     .environmentObject(expenseViewModel)
@@ -109,7 +125,7 @@ struct HomeTrackerView: View {
         .padding(.top)
     }
     
-    // Butoon Add data
+    // Butoon Add Budget
     func AddButton() -> some View{
         Button{
             expenseViewModel.addNewExpense.toggle()
@@ -131,9 +147,82 @@ struct HomeTrackerView: View {
                 }
                 .shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
         }
-        .padding()
+    }
+    // Button exchange data
+    func ExchangeButton() -> some View{
+        Button{
+            expenseViewModel.addNewExpense.toggle()
+        } label:{
+            Image(systemName: "plus")
+                .font(.system(size: 25, weight: .medium))
+                .foregroundColor(.white)
+                .frame(width: 55, height: 55)
+                .background{
+                    Circle()
+                        .fill(
+                            .linearGradient(colors: [
+                            Color("Gradient1"),
+                            Color("Gradient2"),
+                            Color("Gradient3")
+                            
+                            ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                }
+                .shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
+        }
     }
     
+    func TransactionButton() -> some View{
+        Button{
+            expenseViewModel.addNewExpense.toggle()
+        } label:{
+            Image(systemName: "plus")
+                .font(.system(size: 25, weight: .medium))
+                .foregroundColor(.white)
+                .frame(width: 55, height: 55)
+                .background{
+                    Circle()
+                        .fill(
+                            .linearGradient(colors: [
+                            Color("Gradient1"),
+                            Color("Gradient2"),
+                            Color("Gradient3")
+                            
+                            ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                }
+                .shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
+        }
+    }
+    
+    
+    struct FabButton : View{
+        @Binding var showfabButton: Bool
+        var body: some View{
+            Button{
+                showfabButton.toggle()
+            } label:{
+                Image(systemName: "chevron.up")
+                    .font(.system(size: 25, weight: .medium))
+                    .foregroundColor(.white)
+                    .frame(width: 55, height: 55)
+                    .background{
+                        Circle()
+                            .fill(
+                                .linearGradient(colors: [
+                                Color("Gradient1"),
+                                Color("Gradient2"),
+                                Color("Gradient3")
+                                
+                                ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            )
+                    }
+                    .rotationEffect(.init(degrees: showfabButton ? 180 : 0))
+                    .shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
+            }
+            .padding()
+        }
+    }
 }
 
 struct HomeTrackerView_Previews: PreviewProvider {

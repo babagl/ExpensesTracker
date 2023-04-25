@@ -22,13 +22,13 @@ struct ListExpenseView: View {
     }
 }
 
-struct ListExpenseView_Previews: PreviewProvider {
-    var expenses : SousCompte = SousCompte(remark: "", amount: 0, date: Date(), type: .income, color: "", contenue: [])
-    static var previews: some View {
-        Group {
-            ListExpenseView(contenue:sample_contenue)
-                .environmentObject(ExpenseViewModel())
-                
-        }
-    }
-}
+//struct ListExpenseView_Previews: PreviewProvider {
+//    var expenses : SousCompte = SousCompte(remark: "", amount: 0, date: Date(), type: .sortants, color: "", transactions: [])
+//    static var previews: some View {
+//        Group {
+//            ListExpenseView(contenue:expenses)
+//                .environmentObject(ExpenseViewModel())
+//                
+//        }
+//    }
+//}

@@ -26,7 +26,7 @@ struct ExpenseCard: View {
                         .font(.callout)
                         .fontWeight(.semibold)
                     
-                    Text(expenseViewModel.convertExpensesToCurrency(expences: expenseViewModel.expenses))
+                    Text(expenseViewModel.convertExpensesToCurrency(depenses: expenseViewModel.sousComptes))
                         .font(.system(size: 32, weight: .bold))
                         .lineLimit(1)
                         .padding(.bottom, 5)
@@ -44,7 +44,7 @@ struct ExpenseCard: View {
                             .font(.caption)
                             .opacity(0.7)
                         
-                        Text(expenseViewModel.convertExpensesToCurrency(expences: expenseViewModel.expenses , type: .income))
+                        Text(expenseViewModel.convertExpensesToCurrency(depenses: expenseViewModel.sousComptes , type: .entrants))
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)
@@ -62,7 +62,7 @@ struct ExpenseCard: View {
                         Text("Expenses")
                             .font(.caption)
                             .opacity(0.7)
-                        Text(expenseViewModel.convertExpensesToCurrency(expences: expenseViewModel.expenses , type: .expense))
+                        Text(expenseViewModel.convertExpensesToCurrency(depenses: expenseViewModel.sousComptes , type: .sortants))
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)

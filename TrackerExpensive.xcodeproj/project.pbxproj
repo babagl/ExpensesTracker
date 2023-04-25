@@ -17,14 +17,18 @@
 		022BF2F729DD83040042B761 /* HomeTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BF2F629DD83040042B761 /* HomeTrackerView.swift */; };
 		022BF2F929DD84240042B761 /* SousCompte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BF2F829DD84240042B761 /* SousCompte.swift */; };
 		022BF2FB29DD8FA70042B761 /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BF2FA29DD8FA70042B761 /* ExpenseViewModel.swift */; };
+		0237626C29EE94E30018A671 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237626B29EE94E30018A671 /* TransactionViewModel.swift */; };
+		0237626E29EEAF230018A671 /* DetailsBudgetWithTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237626D29EEAF230018A671 /* DetailsBudgetWithTransaction.swift */; };
 		0239746F29E02FC0009FC36B /* dataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0239746D29E02FC0009FC36B /* dataModel.xcdatamodeld */; };
 		02520AA829E593FE00110385 /* ListExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02520AA729E593FE00110385 /* ListExpenseView.swift */; };
 		0258425D29DE116100FD9E97 /* TransactionCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0258425C29DE116100FD9E97 /* TransactionCarView.swift */; };
 		0258425F29DEBC1F00FD9E97 /* FilteredDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0258425E29DEBC1F00FD9E97 /* FilteredDetailView.swift */; };
 		0258426129DECBC200FD9E97 /* ExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0258426029DECBC200FD9E97 /* ExpenseCard.swift */; };
 		0258426329DF199D00FD9E97 /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0258426229DF199D00FD9E97 /* NewExpenseView.swift */; };
+		0261542D29F3F2CF003491C0 /* FabButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261542C29F3F2CF003491C0 /* FabButtonComponent.swift */; };
+		029272DD29F5D67D009419D2 /* FormExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029272DC29F5D67D009419D2 /* FormExpensesView.swift */; };
+		029272DF29F6D5F5009419D2 /* ReelTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029272DE29F6D5F5009419D2 /* ReelTransactionView.swift */; };
 		02B0E58329E7F5DB002BFB3C /* GridBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0E58229E7F5DB002BFB3C /* GridBudgetView.swift */; };
-		02B0E58529E81544002BFB3C /* DetailsBudgetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0E58429E81544002BFB3C /* DetailsBudgetsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,14 +62,18 @@
 		022BF2F629DD83040042B761 /* HomeTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTrackerView.swift; sourceTree = "<group>"; };
 		022BF2F829DD84240042B761 /* SousCompte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SousCompte.swift; sourceTree = "<group>"; };
 		022BF2FA29DD8FA70042B761 /* ExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewModel.swift; sourceTree = "<group>"; };
+		0237626B29EE94E30018A671 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		0237626D29EEAF230018A671 /* DetailsBudgetWithTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBudgetWithTransaction.swift; sourceTree = "<group>"; };
 		0239746E29E02FC0009FC36B /* dataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dataModel.xcdatamodel; sourceTree = "<group>"; };
 		02520AA729E593FE00110385 /* ListExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExpenseView.swift; sourceTree = "<group>"; };
 		0258425C29DE116100FD9E97 /* TransactionCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCarView.swift; sourceTree = "<group>"; };
 		0258425E29DEBC1F00FD9E97 /* FilteredDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDetailView.swift; sourceTree = "<group>"; };
 		0258426029DECBC200FD9E97 /* ExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCard.swift; sourceTree = "<group>"; };
 		0258426229DF199D00FD9E97 /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
+		0261542C29F3F2CF003491C0 /* FabButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabButtonComponent.swift; sourceTree = "<group>"; };
+		029272DC29F5D67D009419D2 /* FormExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormExpensesView.swift; sourceTree = "<group>"; };
+		029272DE29F6D5F5009419D2 /* ReelTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelTransactionView.swift; sourceTree = "<group>"; };
 		02B0E58229E7F5DB002BFB3C /* GridBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBudgetView.swift; sourceTree = "<group>"; };
-		02B0E58429E81544002BFB3C /* DetailsBudgetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBudgetsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +171,10 @@
 				0258426229DF199D00FD9E97 /* NewExpenseView.swift */,
 				02520AA729E593FE00110385 /* ListExpenseView.swift */,
 				02B0E58229E7F5DB002BFB3C /* GridBudgetView.swift */,
-				02B0E58429E81544002BFB3C /* DetailsBudgetsView.swift */,
+				0237626D29EEAF230018A671 /* DetailsBudgetWithTransaction.swift */,
+				0261542C29F3F2CF003491C0 /* FabButtonComponent.swift */,
+				029272DC29F5D67D009419D2 /* FormExpensesView.swift */,
+				029272DE29F6D5F5009419D2 /* ReelTransactionView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				022BF2FA29DD8FA70042B761 /* ExpenseViewModel.swift */,
+				0237626B29EE94E30018A671 /* TransactionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -325,8 +337,12 @@
 				0258425D29DE116100FD9E97 /* TransactionCarView.swift in Sources */,
 				0258426129DECBC200FD9E97 /* ExpenseCard.swift in Sources */,
 				022BF2F729DD83040042B761 /* HomeTrackerView.swift in Sources */,
-				02B0E58529E81544002BFB3C /* DetailsBudgetsView.swift in Sources */,
+				029272DD29F5D67D009419D2 /* FormExpensesView.swift in Sources */,
+				0261542D29F3F2CF003491C0 /* FabButtonComponent.swift in Sources */,
 				0258426329DF199D00FD9E97 /* NewExpenseView.swift in Sources */,
+				0237626E29EEAF230018A671 /* DetailsBudgetWithTransaction.swift in Sources */,
+				0237626C29EE94E30018A671 /* TransactionViewModel.swift in Sources */,
+				029272DF29F6D5F5009419D2 /* ReelTransactionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

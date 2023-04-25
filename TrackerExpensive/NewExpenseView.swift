@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewExpenseView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    
     @EnvironmentObject var expenseViewModel :ExpenseViewModel
     //Environement value
     @Environment(\.self) var env
@@ -120,8 +120,8 @@ struct NewExpenseView: View {
                             ], startPoint: .topLeading, endPoint: .bottomTrailing))
                     }
             }
-            .disabled(expenseViewModel.remark == "" || expenseViewModel.type == .all || expenseViewModel.amount == "")
-            .opacity(expenseViewModel.remark == "" || expenseViewModel.type == .all || expenseViewModel.amount == "" ? 0.6 : 1)
+            .disabled(expenseViewModel.remark == "" || expenseViewModel.type == .touts || expenseViewModel.amount == "")
+            .opacity(expenseViewModel.remark == "" || expenseViewModel.type == .touts || expenseViewModel.amount == "" ? 0.6 : 1)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -148,7 +148,7 @@ struct NewExpenseView: View {
     @ViewBuilder
     func CustomCheckBox() -> some View {
         HStack(spacing: 10){
-            ForEach([TransactionType.income, .expense],id:\.self){type in
+            ForEach([TypeDeTransaction.entrants, .sortants],id:\.self){type in
                 ZStack{
                     RoundedRectangle(cornerRadius: 2)
                         .stroke(.black,lineWidth: 2)
