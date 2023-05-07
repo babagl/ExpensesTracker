@@ -34,10 +34,6 @@ struct GridBudgetView: View {
                         
                         HStack {
                             Spacer()
-                            Text(sousCompte.date.formatted(date: .numeric, time: .omitted))
-                                .font(.caption2)
-                                .opacity(0.5)
-                                .foregroundColor(.black)
                         }
                         .padding(.top, 1)
                         

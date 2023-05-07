@@ -10,9 +10,8 @@ import SwiftUI
 class ExpenseViewModel: ObservableObject {
     // Propreties
      @Published var sousComptes: [SousCompte] = donneesStatic_souscompte
-     
+     @Published  var transactionPrincipal : [Transaction] = donneeP
     
-
      @Published var dateDedepart : Date = Date()
      @Published var dateDefin : Date = Date()
      @Published var currentMonthStartDate : Date = Date()
@@ -23,12 +22,26 @@ class ExpenseViewModel: ObservableObject {
      @Published var tabName: TypeDeTransaction = .sortants
      
      //New Expense Propreties
+     //New Page
      @Published var addNewExpense : Bool = false
+     @Published var showNewTransaction = false
+     
+    //Donnees Des Budget
      @Published var amount : String = ""
      @Published var type : TypeDeTransaction = .touts
      @Published var date : Date = Date()
      @Published var remark : String = ""
-     
+    
+    // Donnees de transaction
+    
+    @Published var montant : String = ""
+    @Published var destinataire : String = ""
+    @Published var transactionType : TypeDeTransaction = .touts
+    
+//    func printTransaction(){
+//        print("mes transactions sont : ", transactionPrincipale.first ?? "rien")
+//    }
+//
      init(){
          //fetching Current Month Starting Date
          let calendar = Calendar.current
@@ -58,10 +71,10 @@ class ExpenseViewModel: ObservableObject {
      }
      
      func convertTransactionToCurrency(transaction : [Transaction], types: TypeDeTransaction = .touts) -> String {
-         print("\(transaction[1].destinataire)")
+         //print("\(transaction[1].destinataire)")
          var values : Double = 0
          values = transaction.reduce(0, { partialResult, transaction in
-             return partialResult + (types == .touts ? (transaction.types == .entrants ? transaction.amount : -transaction.amount) : (transaction.types == types ? transaction.amount : 0))
+             return partialResult + (types == .touts ? (transaction.types == .entrants ? transaction.montant : -transaction.montant) : (transaction.types == types ? transaction.montant : 0))
          })
         return convertNumberToPrice(value: values)
      }
@@ -88,19 +101,38 @@ class ExpenseViewModel: ObservableObject {
          remark = ""
          amount = ""
      }
+    
+    func clearDataDepense(){
+         montant = ""
+         type = .touts
+         destinataire = ""
+     }
      
      //save Data
      func saveData(env : EnvironmentValues){
          print("save")
          let amoutInDouble = (amount as NSString).doubleValue
          let colors = ["Yellow","Red","Purple","Green"]
-         let expense = SousCompte(remark: remark, amount: amoutInDouble, date: date, type: type, color: colors.randomElement() ?? "Yellow", transactions: [Transaction(destinataire: "name", date: Date(), types: type, amount: amoutInDouble)])
+         let expense = SousCompte( remark: remark, amount: amoutInDouble, date: date, type: type, color: colors.randomElement() ?? "Yellow", transactions: [Transaction(destinataire: "name", date: Date(), types: type, amount: amoutInDouble)])
          withAnimation{sousComptes.append(expense)}
          sousComptes = sousComptes.sorted(by: {first, scnd in
-             return scnd.date < first.date
+             return scnd.date > first.date
          })
+         print(expense.transactions.count)
          env.dismiss()
      }
+    
+    func saveTransaction(env: EnvironmentValues){
+        
+        print("save transaction")
+        let montantDelaTransaction = (montant as NSString).doubleValue
+        let transaction = Transaction(destinataire: destinataire, date: Date(), types: transactionType, amount: montantDelaTransaction)
+        withAnimation{
+            transactionPrincipal.append(transaction)
+        }
+        print("\(transaction.id) et \(transaction.destinataire)  sauvegarder avec success \n Merci")
+        env.dismiss()
+    }
      
      
      

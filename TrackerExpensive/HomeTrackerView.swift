@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeTrackerView: View {
     @StateObject var expenseViewModel : ExpenseViewModel = .init()
     @State var showFabButton = false
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             VStack(spacing: 12){
@@ -72,7 +73,7 @@ struct HomeTrackerView: View {
                                     })
                                 }
                                 VStack {
-                                    AddButton()
+                                    ajouterUnBudget()
                                     Spacer()
                                 }
                             }
@@ -92,13 +93,19 @@ struct HomeTrackerView: View {
             NewExpenseView()
                 .environmentObject(expenseViewModel)
         }
+        .fullScreenCover(isPresented: $expenseViewModel.showNewTransaction){
+            
+        }content: {
+            FormExpensesView()
+                .environmentObject(expenseViewModel)
+        }
         .overlay(alignment: .bottomTrailing){
             VStack{
                 
                 if showFabButton{
-                        AddButton()
-                        ExchangeButton()
-                        TransactionButton()
+                        ajouterUnBudget()
+                        faireUneTransaction()
+                        rechargerUnBudgetExistant()
                 }
                 FabButton(showfabButton: $showFabButton)
             }
@@ -116,9 +123,10 @@ struct HomeTrackerView: View {
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.bottom)
             
-            ForEach(expenseViewModel.sousComptes){expense in
+            ForEach(expenseViewModel.transactionPrincipal){depense in
                 //transaction Card View
-                TransactionCarView(expense: expense)
+                Text("hello world")
+                ReelTransactionView(depenses: depense)
                     .environmentObject(expenseViewModel)
             }
         }
@@ -126,11 +134,12 @@ struct HomeTrackerView: View {
     }
     
     // Butoon Add Budget
-    func AddButton() -> some View{
+    func ajouterUnBudget() -> some View{
         Button{
             expenseViewModel.addNewExpense.toggle()
+            expenseViewModel.clearData()
         } label:{
-            Image(systemName: "plus")
+            Image(systemName: "rectangle.stack.badge.plus")
                 .font(.system(size: 25, weight: .medium))
                 .foregroundColor(.white)
                 .frame(width: 55, height: 55)
@@ -149,9 +158,10 @@ struct HomeTrackerView: View {
         }
     }
     // Button exchange data
-    func ExchangeButton() -> some View{
+    func faireUneTransaction() -> some View{
         Button{
-            expenseViewModel.addNewExpense.toggle()
+            expenseViewModel.showNewTransaction.toggle()
+            expenseViewModel.clearData()
         } label:{
             Image(systemName: "plus")
                 .font(.system(size: 25, weight: .medium))
@@ -172,11 +182,12 @@ struct HomeTrackerView: View {
         }
     }
     
-    func TransactionButton() -> some View{
+    func rechargerUnBudgetExistant() -> some View{
         Button{
             expenseViewModel.addNewExpense.toggle()
+            expenseViewModel.clearData()
         } label:{
-            Image(systemName: "plus")
+            Image(systemName: "arrowshape.turn.up.right")
                 .font(.system(size: 25, weight: .medium))
                 .foregroundColor(.white)
                 .frame(width: 55, height: 55)
@@ -194,6 +205,8 @@ struct HomeTrackerView: View {
                 .shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
         }
     }
+    
+    //rectangle.stack.badge.plus
     
     
     struct FabButton : View{

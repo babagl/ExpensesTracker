@@ -9,21 +9,18 @@ import SwiftUI
 
 struct ReelTransactionView: View {
     var depenses : Transaction
-    @EnvironmentObject var expenseViewModel : ExpenseViewModel
+    @StateObject var expenseViewModel : ExpenseViewModel = .init()
     
     var body: some View {
         
         HStack (spacing: 12){
-            
-            if depenses.destinataire.first != nil{
-                
                 VStack{
                     Text(depenses.destinataire)
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity ,alignment: .leading)
                         .shadow(color: .black.opacity(0.08), radius: 5, x: 5,y: 5)
                     
-                    Text(String(depenses.amount))
+                    Text(String(depenses.montant))
                         .foregroundColor(.black)
                         .fontWeight(.semibold)
                         .lineLimit(1)
@@ -31,7 +28,7 @@ struct ReelTransactionView: View {
                 }
                 VStack(alignment: .trailing, spacing: 7){
                     //displaying price
-                    let price = expenseViewModel.convertNumberToPrice(value: depenses.types == .sortants ? -depenses.amount : depenses.amount)
+                    let price = expenseViewModel.convertNumberToPrice(value: depenses.types == .sortants ? -depenses.montant : depenses.montant)
                     Text(price)
                         .font(.callout)
                         .opacity(0.7)
@@ -42,7 +39,7 @@ struct ReelTransactionView: View {
                         .foregroundColor(.black)
                         
                 }
-            }
+            
         }
         .padding()
         .background{

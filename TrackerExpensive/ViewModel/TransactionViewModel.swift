@@ -54,7 +54,7 @@ class TransactionViewModel: ObservableObject {
         print("\(transaction[1].destinataire)")
         var value : Double = 0
         value = transaction.reduce(0, { partialResult, transaction in
-            return partialResult + (type == .touts ? (transaction.types == .entrants ? transaction.amount : -transaction.amount) : (transaction.types == type ? transaction.amount : 0))
+            return partialResult + (type == .touts ? (transaction.types == .entrants ? transaction.montant : -transaction.montant) : (transaction.types == type ? transaction.montant : 0))
         })
        return convertNumberToPrice(value: value)
     }
